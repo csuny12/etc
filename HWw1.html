@@ -21,7 +21,42 @@
         .small {
             font-size: 15px;
         }
+        
+        .card {
+            width: 300px;
+            margin: auto;
+        }
     </style>
+    <script>
+        function hey() {
+            let name = $('#name').val();
+            // let select = $('#inputGroupSelect01').val();
+            let add = $('#add').val();
+            let tel = $('#tel').val();
+            let list = '<li>' + name + '&nbsp' + add + '&nbsp' + tel + '</li>';
+            if (name == '') {
+                alert('주문자 성함을 입력해주세요.');
+                $('#name').focus();
+            }
+            // else if (select == '') {
+            // alert('무게를 선택하세요.');
+            // $('#inputGroupSelect01').focus();
+            // } 
+            else if (add == '') {
+                alert('주소를 입력해주세요.');
+                $('#add').focus();
+            } else if (tel == '') {
+                alert('전화번호를 입력해주세요.');
+                $('#tel').focus();
+            } else {
+                alert('주문이 성공하였습니다');
+                $('#orderlist').append(list);
+                $('#name').val('');
+                $('#add').val('');
+                $('#tel').val('');
+            }
+        }
+    </script>
 
 </head>
 
@@ -36,18 +71,18 @@
             <p class="card-text ">특별한 날 사랑하는 사람들과 함께 즐기세요. 북태평양에서 바로 잡은 킹크랩입니다. 신선한 바다의 맛을 느껴보세요.</p>
         </div>
         <div class="card-body ">
-            <h5 class="card-title ">주문하기</h5>
+            <h5 class="card-title">주문하기</h5>
 
             <p>
                 주문자 성함 :
-                <input type="text " />
+                <input id='name' type="text" />
             </p>
             <p>
                 <div class="input-group mb-3 ">
                     <div class="input-group-prepend ">
                         <label class="input-group-text " for="inputGroupSelect01 ">Options</label>
                     </div>
-                    <select class="custom-select " id="inputGroupSelect01 ">
+                    <select class="custom-select " id="inputGroupSelect01">
                       <option selected>무게를 선택하세요.</option>
                       <option value="1 ">1kg</option>
                       <option value="2 ">2kg</option>
@@ -57,14 +92,17 @@
             </p>
             <p>
                 주소 :
-                <input type="text " />
+                <input id="add" type="text " />
             </p>
             <p>
                 전화번호 :
-                <input type="text " />
+                <input id="tel" type="text " />
             </p>
-            <button type="button " class="btn btn-primary btn-lg btn-block ">결제하기</button>
+            <button onclick="hey()" type="button" class="btn btn-primary btn-lg btn-block ">결제하기</button>
         </div>
+        <ol type='1' id='orderlist'>
+
+        </ol>
 
     </div>
 </body>

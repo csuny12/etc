@@ -16,31 +16,41 @@
         h6.warning {
             color: red;
         }
+        
+        #warning-q5 {
+            display: none;
+        }
     </style>
 
     <script>
         function q1() {
             let txt = $("#input-q1").val();
             if (txt == "") {
-                alert("압력하세요!");
+                alert("입력해!");
             } else {
                 alert(txt);
             }
 
-            // 1. input-q1의 입력값을 가져온다.
-            // 2. 만약 입력값이 빈칸이면 if(입력값=='')
-            // 3. alert('입력하세요!') 띄우기
-            // 4. alert(입력값) 띄우기
         }
+        // 1. input-q1의 입력값을 가져온다.
+        // 2. 만약 입력값이 빈칸이면 if(입력값=='')
+        // 3. alert('입력하세요!') 띄우기
+        // 4. alert(입력값) 띄우기
+
 
         function q5() {
-            let q5 = $('#input-q5').val();
-            if (q5.indexOf("@") != -1) {
-                alert(q5);
-            } else {
+            let q5 = $("#input-q5").val();
+            if (q5.indexOf('@') == -1) {
                 alert("이메일이 아닙니다.");
-                $('#warning-q5').show();
+                $("#warning-q5").show();
+                $("#domain-q5").hide();
+            } else {
+                let txt = q5.split('@')[1].split('.')[0];
+                $("#domain-q5").text(txt);
+                $("#warning-q5").hide();
+                $("#domain-q5").show();
             }
+
 
             // 1. input-q5 값을 가져온다.
             // 2. 만약 가져온 값에 @가 있으면 (indexOf를 이용하기 - 찾아보자!)
@@ -53,10 +63,10 @@
         }
 
         function q7() {
-            let q7 = $("#input-q7").val();
-            let tag = '<li>' + q7 + '</li>';
-            $("#names-q7").append(tag);
-            $("#input-q7").val('');
+            let txt7 = $("#input-q7").val();
+            let temp_html = '<li>' + txt7 + '</li>';
+            $("#names-q7").append(temp_html);
+
             // 1. input-q7 값을 가져온다.
             // 2. 가져온 값을 이용해 names-q7에 붙일 태그를 만든다. (let temp_html = '<li>임꺽정</li>')
             // 3. 만들어둔 temp_html을 names-q7에 붙인다.(jQuery의 $('...').append(temp_html)을 이용하면 굿!)
@@ -98,10 +108,10 @@
         <input id="input-q7" type="text" placeholder="여기에 이름을 입력" />
         <button onclick="q7()">이름 붙이기</button>
         <button onclick="q7_remove()">다지우기</button>
-        <ol type='1' id="names-q7">
+        <ul id="names-q7">
             <li>세종대왕</li>
             <li>임꺽정</li>
-        </ol>
+        </ul>
     </div>
 </body>
 
