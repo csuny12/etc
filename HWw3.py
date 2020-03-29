@@ -6,6 +6,7 @@ headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/
 data = requests.get('https://www.genie.co.kr/chart/top200?ditc=D&rtm=N&ymd=20200309',headers=headers)
 
 
+soup = BeautifulSoup(data.text, 'html.parser')
 
 songs_info = soup.select ('table.list-wrap>tbody>tr>td.info')
 rank=1
