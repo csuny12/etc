@@ -30,19 +30,17 @@
     <script>
         function hey() {
             let name = $('#name').val();
-            // let select = $('#inputGroupSelect01').val();
+            let select = $('#inputGroupSelect01').val();
             let add = $('#add').val();
             let tel = $('#tel').val();
-            let list = '<li>' + name + '&nbsp' + add + '&nbsp' + tel + '</li>';
+            let list = '<li>' + name + '&nbsp' + select + 'kg &nbsp' + add + '&nbsp' + tel + '</li>';
             if (name == '') {
                 alert('주문자 성함을 입력해주세요.');
                 $('#name').focus();
-            }
-            // else if (select == '') {
-            // alert('무게를 선택하세요.');
-            // $('#inputGroupSelect01').focus();
-            // } 
-            else if (add == '') {
+            } else if (select == '무게를 선택하세요.') {
+                alert('무게를 선택하세요.');
+                $('#inputGroupSelect01').focus();
+            } else if (add == '') {
                 alert('주소를 입력해주세요.');
                 $('#add').focus();
             } else if (tel == '') {
