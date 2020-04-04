@@ -29,11 +29,20 @@
     </style>
     <script>
         function hey() {
+
             let name = $('#name').val();
             let select = $('#inputGroupSelect01').val();
             let add = $('#add').val();
             let tel = $('#tel').val();
-            let list = '<li>' + name + '&nbsp' + select + 'kg &nbsp' + add + '&nbsp' + tel + '</li>';
+            // let list = '<li>' + name + '&nbsp' + select + 'kg &nbsp' + add
+            let temp_html = '<tr>\
+                                <td>' + name + '</td>\
+                                <td>' + select + '</td>\
+                                <td>' + add + '</td>\
+                                <td>' + tel + '</td>\
+                            </tr>';
+
+
             if (name == '') {
                 alert('주문자 성함을 입력해주세요.');
                 $('#name').focus();
@@ -48,10 +57,10 @@
                 $('#tel').focus();
             } else {
                 alert('주문이 성공하였습니다');
-                $('#orderlist').append(list);
-                $('#name').val('');
-                $('#add').val('');
-                $('#tel').val('');
+                $('#orderlist').append(temp_html);
+                // $('#name').val('');
+                // $('#add').val('');
+                // $('#tel').val('');
             }
         }
     </script>
@@ -98,9 +107,29 @@
             </p>
             <button onclick="hey()" type="button" class="btn btn-primary btn-lg btn-block ">결제하기</button>
         </div>
-        <ol type='1' id='orderlist'>
+        <!-- <ol type='1' id='orderlist'>
 
-        </ol>
+        </ol> -->
+        <div class="orders">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="meta_info" scope="col">성함</th>
+                        <th class="meta_info" scope="col">중량</th>
+                        <th class="meta_info" scope="col">주소</th>
+                        <th scope="col">전화번호</th>
+                    </tr>
+                </thead>
+                <tbody id="orderlist">
+                    <tr>
+                        <!-- <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </body>
